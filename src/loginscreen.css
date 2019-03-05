@@ -1,0 +1,139 @@
+/* @font-face kit by Fonts2u (https://fonts2u.com) */ @font-face {font-family:"MegaMan 2 Regular";src:url("./megaman_2.eot?") format("eot"),url("./megaman_2.woff") format("woff"),url("./megaman_2.ttf") format("truetype"),url("./megaman_2.svg#MegaMan-2") format("svg");font-weight:normal;font-style:normal;}
+
+
+#backgroundImage{
+  
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+}
+form{
+  width: 500px;
+  height: 170px;
+}
+
+#loginContainer{
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 50px;
+  
+  /* bring your own prefixes */
+  
+  display: block;
+  overflow: hidden;
+}
+
+#username{
+  font-family:"MegaMan 2 Regular";
+  border: 2px solid #ffffff;
+  width: 300px;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 10px; 
+  margin-right: 20px;
+  text-decoration: none;
+  outline: 0;
+  
+}
+
+.notValidMessage{
+  font-family:"MegaMan 2 Regular";
+  font-size: 16px;
+  color: #c6c6c6;
+}
+
+#loginButton{
+  font-family:"MegaMan 2 Regular";
+  position: relative;
+  border: 2px solid #ffffff;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 10px;
+  top: -1px;
+}
+#loginButton:hover{
+  background-color: #ccc;
+  border-color: #ccc;
+}
+
+.mainSelectContainer{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  float: left;
+  width: 250px;
+  height: 260px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  
+  
+  
+}
+
+.container{
+  font-family: "MegaMan 2 Regular";
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+ 
+}
+.container .radio_input {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  padding: 20px;
+}
+
+.radio_span{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  top: -2px;
+  
+}
+.container:hover input ~ .radio_span {
+  background-color: #ccc;
+}
+.container input:checked ~ .radio_span {
+  background-color: rgb(0, 0, 0);
+  transition: 0.3s;
+}
+.radio_span:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.container input:checked ~ .radio_span:after {
+  display: block;
+}
+.container .radio_span:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
