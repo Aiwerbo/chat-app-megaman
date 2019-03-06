@@ -9,7 +9,7 @@ import bubbleman from './bubbleman.png'
 import flashman from './flashman.png'
 import woodman from './woodman.png'
 import heatman from './heatman.png'
-const lettersRegex = /^[0-9a-öA-Ö_-\s]+$/;
+const lettersRegex = /^[0-9a-zA-Z_-\s]+$/;
 
 let bosses = {
   names: {
