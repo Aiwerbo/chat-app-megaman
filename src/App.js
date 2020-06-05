@@ -4,12 +4,12 @@ import './App.css';
 import background from './megaman2.jpg'
 import LoginScreen from './loginscreen.js';
 import io from 'socket.io-client';
+import moment from 'moment'
 const Linkify = require('linkifyjs/react');
 
 function timestampConverter(timestamp){
 
-  let options = { year: 'numeric', month: 'long', day: 'numeric'}
-  return new Date(timestamp).toLocaleDateString("se", options) + ' ' + new Date(timestamp).toLocaleTimeString("se")
+  return (moment(timestamp).format('MMMM Do YYYY, h:mm:ss a'))
 }
 
 function convertURL(str){
@@ -27,10 +27,12 @@ function scrollBottom(){
 }
 
 function createListItems(messages){
+
+  console.log(messages)
   
-  const listItems = messages.map(({username, content, id, timestamp}) => {
+  const listItems = messages.map(({username, content, id, date}) => {
   
-    return <li key={id.toString()}><span className="date">{timestampConverter(timestamp)}</span><br></br><span className="chatText">{username + ': '}{convertURL(content)}</span><br></br><br></br></li>
+    return <li key={id.toString()}><span className="date">{timestampConverter(date)}</span><br></br><span className="chatText">{username + ': '}{convertURL(content)}</span><br></br><br></br></li>
        
   })
   return listItems
@@ -58,14 +60,15 @@ class App extends Component {
   
 
   componentDidMount(){
-    this.socket = io('http://ec2-13-53-66-202.eu-north-1.compute.amazonaws.com:3000/');
+    this.socket = io('http://localhost:3010/');
     this.socket.on("messages", (data) => {
       this.setState({ messages: data });
     })
     
     this.socket.on("new_message", (data) => {
-      
-      this.setState({messages: [...this.state.messages, data]});
+      const messages = [...this.state.messages, data]
+      messages.reverse()
+      this.setState({messages: messages});
 
     });
     
