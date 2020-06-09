@@ -60,7 +60,7 @@ class App extends Component {
   
 
   componentDidMount(){
-    this.socket = io('http://localhost:3010/');
+    this.socket = io('http://localhost:3010');
     this.socket.on("messages", (data) => {
       this.setState({ messages: data });
     })

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: megaman-deployment
+spec:
+  selector:
+    matchLabels:
+      app: megaman-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: megaman-app
+    spec:
+      containers:
+      - name: megaman-app
+        image: gcr.io/aiwerbo-chat-megaman/megaman-app:v2
+        ports:
+        - containerPort: 8080
+      - name: megaman-server
+        image: gcr.io/aiwerbo-chat-megaman/megaman-server:v1
+        ports:
+        - containerPort: 3010
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer
+spec:
+  selector:
+    app: megaman-app
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
